@@ -21,7 +21,7 @@ from lingua_podre import tokenize
 tokenize("Olá Mundo")           # ['olá', 'mundo']
 ```
 
-It splits on `" "` only — it does not strip punctuation, so `"João,"` stays
+It splits on `" "` only. It does not strip punctuation, so `"João,"` stays
 `"joão,"`. Tokens are matched against the word lists verbatim, so trailing
 punctuation simply fails to match.
 
@@ -37,8 +37,8 @@ get_word_counts("olá o meu nome é João")
 # {'ca': 1, 'pt': 4, 'es': 1, 'pl': 1, 'tr': 1, 'ro': 2, 'it': 2, 'cs': 1, 'sk': 1}
 ```
 
-A token that appears in several languages' lists is counted once per language —
-that is the whole signal. Only language codes with at least one hit are keys.
+A token that appears in several languages' lists is counted once per language.
+That is the whole signal. Only language codes with at least one hit are keys.
 
 ### `get_lang_scores(text) -> dict[str, float]`
 
@@ -56,7 +56,7 @@ Raises `ZeroDivisionError` when no token matches anything (total is 0). See
 
 ### `predict_lang(text) -> list[str]`
 
-The top-scoring language code(s). Returns a **list** because ties are possible.
+The top-scoring language code(s). It returns a **list** because ties are possible.
 
 ```python
 from lingua_podre import predict_lang
@@ -81,7 +81,7 @@ len(langs)                  # 28
 
 ### `lang_codes -> dict[str, str]`
 
-The inverse of `langs` — English name to code.
+The inverse of `langs`: English name to code.
 
 ```python
 from lingua_podre import lang_codes
@@ -108,8 +108,5 @@ sorted(stopwords)           # ['ar', 'bg', 'ca', 'cs', ...]  (28 codes)
 | `get_lang_scores(text)` | `dict[str, float]` (sums to 1) | raises `ZeroDivisionError` |
 | `predict_lang(text)` | `list[str]` (codes) | raises `ValueError` |
 
-## Where next
-
-- [quickstart.md](quickstart.md) — install and first call
-- [advanced.md](advanced.md) — ties, guards, supported languages
-- [opm.md](opm.md) — the OVOS plugin wrapper
+---
+[← Quickstart](quickstart.md) · [Home](../readme.md) · [Advanced →](advanced.md)

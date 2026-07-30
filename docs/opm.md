@@ -23,7 +23,7 @@ detector.detect_probs("olá o meu nome é João")  # {...}    -> get_lang_scores
   `get_lang_scores`.
 
 Both inherit `predict_lang`/`get_lang_scores` behaviour exactly, including the
-exceptions on unmatched text — see
+exceptions on unmatched text. See
 [advanced.md](advanced.md#empty-and-undetectable-input). Guard the input the same
 way before handing it to the plugin.
 
@@ -38,8 +38,5 @@ ovos-lang-detector-plugin-lingua-podre = lingua_podre.opm:LinguaPodrePlugin
 Once installed, OVOS discovers it by that name; you select it through your OVOS
 language configuration rather than importing it directly.
 
-## Where next
-
-- [api.md](api.md) — the functions the plugin wraps
-- [advanced.md](advanced.md) — guarding undetectable input
-- [quickstart.md](quickstart.md) — the engine on its own
+---
+[← Advanced](advanced.md) · [Home](../readme.md)

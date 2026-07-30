@@ -3,8 +3,8 @@
 `lingua_podre` is a word-list language detector in pure Python. It scores a piece
 of text by counting how many of its tokens appear in per-language stopword and
 top-word lists, normalises those counts to probabilities, and returns the most
-likely language code. No model, no download, no network — the word lists ship
-inside the package.
+likely language code. It uses no model, needs no download, and needs no
+network. The word lists ship inside the package.
 
 ## 1. Install
 
@@ -14,7 +14,7 @@ pip install -e .                # from a checkout
 ```
 
 There are zero runtime dependencies. The OVOS plugin entry point
-([opm.md](opm.md)) additionally needs `ovos-plugin-manager`, but the detector
+([opm.md](opm.md)) also needs `ovos-plugin-manager`, but the detector
 functions themselves do not.
 
 ## 2. The one idea
@@ -51,8 +51,8 @@ dict. The values sum to 1.
 
 ## 4. The gotcha you will hit first
 
-If **none** of the tokens match any list — short text, a name, an emoji, a
-language that is not bundled — there is nothing to score. `get_lang_scores`
+If **none** of the tokens match any list (short text, a name, an emoji, or a
+language that is not bundled), there is nothing to score. `get_lang_scores`
 returns an empty dict and `predict_lang` raises `ValueError` (it calls `max()`
 on an empty sequence). Guard it:
 
@@ -70,8 +70,5 @@ print(safe_predict("xyzzy"))    # []
 
 See [advanced.md](advanced.md) for the rest of the edge cases.
 
-## Where next
-
-- [api.md](api.md) — every public function, its signature, and its return shape
-- [advanced.md](advanced.md) — ties, thresholds, supported languages, recipes
-- [opm.md](opm.md) — using it as an OVOS language-detector plugin
+---
+[Home](../readme.md) · [API →](api.md)
