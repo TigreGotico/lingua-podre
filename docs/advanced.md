@@ -1,13 +1,13 @@
 # Advanced usage
 
-Recipes and edge cases for `lingua_podre`. The detector is intentionally tiny;
-most of the work is knowing where it goes flat.
+Recipes and edge cases for `lingua_podre`. The detector is intentionally tiny.
+Most of the work is knowing where it goes flat.
 
 ## Empty and undetectable input
 
 The scoring path divides by the total number of matched tokens. When nothing
-matches — a single rare word, a proper name, a non-bundled language — that total
-is 0:
+matches (a single rare word, a proper name, or a non-bundled language), that
+total is 0:
 
 - `get_word_counts` returns `{}`
 - `get_lang_scores` raises `ZeroDivisionError`
@@ -58,9 +58,9 @@ for code, p in ranked[:3]:
     print(f"{code}: {p:.0%}")
 ```
 
-A simple confidence threshold — accept only when the top score clears, say, 0.25
-and beats the runner-up by a margin — filters out the flat distributions you get
-from short or mixed text.
+A simple confidence threshold filters out the flat distributions you get from
+short or mixed text: accept the top score only when it clears, say, 0.25 and
+beats the runner-up by a margin.
 
 ## Supported languages
 
@@ -73,7 +73,7 @@ for code, name in sorted(langs.items()):
     print(code, name)
 ```
 
-The package ships more word-list files than it loads — only languages listed in
+The package ships more word-list files than it loads. Only languages listed in
 `res/languages.json` (mirrored by `langs`) are active. A token from an
 unsupported language will not match and contributes nothing.
 
@@ -98,8 +98,5 @@ get_word_counts(toks)                      # cleaner matches than the default sp
 splitter, so to use a custom tokeniser end-to-end, call `get_word_counts`
 yourself and normalise the counts.
 
-## Where next
-
-- [api.md](api.md) — exact signatures and return shapes
-- [opm.md](opm.md) — wiring it into an OVOS pipeline
-- [quickstart.md](quickstart.md) — the basics
+---
+[← API](api.md) · [Home](../readme.md) · [OVOS plugin →](opm.md)
